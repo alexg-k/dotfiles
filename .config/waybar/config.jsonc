@@ -83,43 +83,43 @@
       ]
     },
 
-    "group/power": {
-      "orientation": "horizontal",
-      "drawer": {
-        "transition-duration": "500",
-        "transition-left-to-right": "true",
-        "children-class": "drawer-child"
-        //"click-to-reveal": "false"
-      },
-      "modules": ["custom/battery", "backlight"]
-    },
+    // "group/power": {
+    //   "orientation": "horizontal",
+    //   "drawer": {
+    //     "transition-duration": "500",
+    //     "transition-left-to-right": "true",
+    //     "children-class": "drawer-child"
+    //     //"click-to-reveal": "false"
+    //   },
+    //   "modules": ["custom/battery", "backlight"]
+    // },
 
-    "backlight": {
-      "device": "intel_backlight",
-      "format": "{icon} {percent}%",
-      "format-icons": ["󱩎", "󱩑", "󱩓", "󱩕", "󰛨"],
-      "scroll-step": 2
-    },
-
-    "custom/nvidia": {
-      "interval": 4,
-      "return-type": "json",
-      "exec": "~/.config/hypr/themes/Mocha-Power/nvidia.sh",
-      "format": "<span size='x-large' rise='-2500'>󰢮</span>{text}",
-      "tooltip": "true",
-      "tooltip-format": "{alt}"
-    },
-
-    "custom/battery": {
-      "interval": 4,
-      "return-type": "json",
-      "exec": "~/.config/hypr/themes/Mocha-Power/bat-pp.sh refresh",
-      "exec-on-event": true,
-      "format": "{text}%",
-      "on-click": "~/.config/hypr/themes/Mocha-Power/bat-pp.sh toggle & aplay ~/.config/sounds/interact.wav",
-      "tooltip": "true",
-      "tooltip-format": "{alt}"
-    },
+    // "backlight": {
+    //   "device": "intel_backlight",
+    //   "format": "{icon} {percent}%",
+    //   "format-icons": ["󱩎", "󱩑", "󱩓", "󱩕", "󰛨"],
+    //   "scroll-step": 2
+    // },
+    //
+    // "custom/nvidia": {
+    //   "interval": 4,
+    //   "return-type": "json",
+    //   "exec": "~/.config/hypr/themes/Mocha-Power/nvidia.sh",
+    //   "format": "<span size='x-large' rise='-2500'>󰢮</span>{text}",
+    //   "tooltip": "true",
+    //   "tooltip-format": "{alt}"
+    // },
+    //
+    // "custom/battery": {
+    //   "interval": 4,
+    //   "return-type": "json",
+    //   "exec": "~/.config/hypr/themes/Mocha-Power/bat-pp.sh refresh",
+    //   "exec-on-event": true,
+    //   "format": "{text}%",
+    //   "on-click": "~/.config/hypr/themes/Mocha-Power/bat-pp.sh toggle & aplay ~/.config/sounds/interact.wav",
+    //   "tooltip": "true",
+    //   "tooltip-format": "{alt}"
+    // },
 
     // "custom/battery": {
     //   "return-type": "json",
@@ -164,8 +164,8 @@
 
     "hyprland/language": {
       "format": " {}",
-      "format-fi": "Vittu",
-      "format-ru": "Блять",
+      "format-de": "German",
+      "format-il": "עברית",
       "min-length": 8,
       "on-click": "hyprctl switchxkblayout current next & aplay ~/.config/sounds/interact.wav",
       "tooltip": false,
@@ -184,7 +184,7 @@
     },
 
     "memory#swap": {
-      "interval": 16,
+      "interval": 30,
       "format": "󰾵 {swapPercentage}%",
       "tooltip": "{}",
       "tooltip-format": "{swapUsed}/{swapTotal}GiB"
@@ -350,27 +350,27 @@
 
   {
     // INDICATOR BAR //
-    "layer": "top",
-    "position": "top",
-    "name": "indicator",
-    "passthrough": true,
-    "reload_style_on_change": true,
-    // "output": "eDP-1",
+    // "layer": "top",
+    // "position": "top",
+    // "name": "indicator",
+    // "passthrough": true,
+    // "reload_style_on_change": true,
+    // // "output": "eDP-1",
+    //
+    // "height": 30,
+    //
+    // "margin-top": -29,
+    // // "margin-left": 10,
+    // "margin-right": 24,
 
-    "height": 30,
-
-    "margin-top": -29,
-    // "margin-left": 10,
-    "margin-right": 24,
-
-    "modules-right": ["custom/batteryindicator"],
-
-    "custom/batteryindicator": {
-      "interval": 10,
-      "return-type": "json",
-      "tooltip": false,
-      "format": " ",
-      "exec": "~/.config/hypr/themes/Mocha-Power/bat-pp.sh bar"
-    }
+    // "modules-right": ["custom/batteryindicator"],
+    //
+    // "custom/batteryindicator": {
+    //   "interval": 10,
+    //   "return-type": "json",
+    //   "tooltip": false,
+    //   "format": " ",
+    //   "exec": "~/.config/hypr/themes/Mocha-Power/bat-pp.sh bar"
+    // }
   }
 ]
