@@ -14,6 +14,13 @@ if [[ $- != *i* ]] ; then
 	return
 fi
 
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
 # Bash won't get SIGWINCH if another process is in the foreground.
 # Enable checkwinsize so that bash will check the terminal size when
 # it regains control.  #65623
@@ -86,26 +93,26 @@ fi
 
 if ${use_color} ; then
 	if [[ ${EUID} == 0 ]] ; then
-		PS1+='\[\033[01;31m\]\h\[\033[01;34m\] \w \$\[\033[00m\] '
+		PS1='\[\033[01;31m\]\h\[\033[01;34m\] \w \$\[\033[00m\] '
 	else
-		
-	# Add git branch if its present to PS1
-	parse_git_branch() {
-     		git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-	}
-		#PS1+='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '# arch default
-		PS1+='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[33m\]$(parse_git_branch) \[\033[00m\]\$ '
+		# Add git branch if its present to PS1
+		parse_git_branch() {
+			git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+		}
+		PS1='\[\033[38;2;166;227;161m\]\u@\h\[\033[0m\]:\[\033[38;2;137;180;250m\]\w\[\033[0m\]\[\033[38;2;245;194;231m\]$(parse_git_branch)\[\033[0m\]\[\033[38;2;205;214;244m\]\$\[\033[0m\] '
 	fi
 
 	#BSD#@export CLICOLOR=1
-	#GNU#@alias ls='ls --color=auto'
+	alias ls='ls --color=auto'
 	alias grep='grep --colour=auto'
 	alias egrep='egrep --colour=auto'
 	alias fgrep='fgrep --colour=auto'
 else
-	# show root@ when we don't have colors
-	PS1+='\u@\h \w \$ '
+	PS1='\u@\h \w \$ '
 fi
+
+export EDITOR=/usr/bin/nvim
+export BROWSER="flatpak run app.zen_browser.zen"
 
 for sh in /etc/bash/bashrc.d/* ; do
 	[[ -r ${sh} ]] && source "${sh}"
@@ -124,6 +131,30 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# # ex - archive extractor
+# # usage: ex <file>
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1     ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
 
 # enable vi mode (use by pressing ESCAPE and exit by pressing 'i'))
 set -o vi
