@@ -99,7 +99,6 @@
 /* {{{ */
 #waybar.main #custom-nvidia,
 #waybar.main #custom-weather,
-#waybar.main #custom-weather,
 #waybar.main #custom-battery,
 #waybar.main #keyboard-state,
 #waybar.main #network,
@@ -164,6 +163,7 @@
   background: @background2;
 }
 
+#waybar.main #custom.launcher,
 #waybar.main #clock {
   border-radius: 0pt 6pt 6pt 0pt;
 }
@@ -457,6 +457,12 @@
   background-position: 2px, 0px;
   background-repeat: no-repeat;
   background-image: url("/home/jan-aarela/.config/hypr/themes/Mocha-Power/pacman.png");
+}
+#waybar.main #custom-launcher {
+  padding-left: 12pt;
+  padding-right: 8pt;
+  background: @module_bg;
+  color: @window;
 }
 
 /* }}} */

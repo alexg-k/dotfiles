@@ -13,6 +13,7 @@
     "margin-right": 10,
 
     "modules-left": [
+      "custom/launcher",
       // "group/traym",
       // "custom/spacer5",
       "hyprland/workspaces",
@@ -43,6 +44,10 @@
     ],
 
     // Modules
+    "custom/launcher": {
+      "format": "󰣇",
+      "on-click": "wofi --allow-images -i --show drun",
+    },
     "disk": {
       "interval": 16,
       "format": " {percentage_used}%",
