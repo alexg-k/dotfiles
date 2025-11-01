@@ -1,6 +1,3 @@
-/* vim:fileencoding=utf-8:foldmethod=marker
-*/
-
 /* Define colors */
 /* {{{ */
 @define-color background1 rgba(32, 32, 48, 1);
@@ -77,8 +74,8 @@
 /* {{{ */
 #waybar.main {
   background: @background2;
-  font-family: "JetBrainsMono Nerd Font propo";
-  font-size: 12pt;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 9pt;
   font-weight: 600;
   color: @text;
   border-radius: 6pt;
@@ -88,7 +85,7 @@
 }
 
 #waybar.main button {
-  font-family: "JetBrains Mono Nerd Font propo";
+  font-family: "JetBrains Mono Nerd Font";
   font-size: 12pt;
   font-weight: 600;
   color: @text;
@@ -98,9 +95,8 @@
 
 /* Main bar modules */
 /* {{{ */
-#waybar.main #custom-nvidia,
+#waybar.main #custom-gpu-usage,
 #waybar.main #custom-weather,
-#waybar.main #custom-battery,
 #waybar.main #keyboard-state,
 #waybar.main #network,
 #waybar.main #battery,
@@ -111,7 +107,8 @@
 #waybar.main #memory.swap,
 #waybar.main #memory.ram,
 #waybar.main #submap,
-#waybar.main #pulseaudio,
+#waybar.main #wireplumber.sink,
+#waybar.main #wireplumber.source,
 #waybar.main #temperature,
 #waybar.main #traym,
 #waybar.main #window,
@@ -125,16 +122,11 @@
   padding-right: 3pt;
 }
 
-#waybar.main #custom-nvidia {
-  margin-top: -4px;
-  margin-bottom: -4px;
-}
-
 /* }}} */
 
 /* Module colors */
 /* {{{ */
-#waybar.main #custom-nvidia,
+#waybar.main #custom-gpu-usage,
 #waybar.main #cpu,
 #waybar.main #temperature,
 #waybar.main #memory.ram,
@@ -145,15 +137,15 @@
   background: @background1;
 }
 
-#waybar.main #pulseaudio {
+#waybar.main #battery,
+#waybar.main #backlight,
+#waybar.main #wireplumber.sink,
+#waybar.main #wireplumber.source {
   color: @audio;
   background: @background2;
 }
 
-#waybar.main #custom-battery,
-#waybar.main #language,
-#waybar.main #backlight,
-#waybar.main #battery {
+#waybar.main #language {
   color: @misc;
   background: @background1;
 }
@@ -220,8 +212,8 @@
 
 /* Main bar criticals */
 /* {{{ */
-#waybar.main #custom-nvidia.critical,
-/* #waybar.main #custom-battery.critical, */
+#waybar.main #custom-gpu-usage.critical,
+#waybar.main #battery.critical,
 #waybar.main #memory.swap.critical,
 #waybar.main #memory.ram.critical,
 #waybar.main #cpu.critical,
@@ -253,13 +245,13 @@
 
 /* Main bar warnings */
 /* {{{ */
-#waybar.main #pulseaudio.output.muted,
-#waybar.main #pulseaudio.input.source-muted {
+#waybar.main #wireplumber.sink.muted,
+#waybar.main #wireplumber.source.source-muted {
   color: @sepepator;
 }
 
-#waybar.main #custom-battery.warning,
-#waybar.main #custom-battery.critical {
+#waybar.main #battery.warning,
+#waybar.main #battery.critical {
   color: @warning;
 }
 
@@ -267,7 +259,7 @@
 
 /* Battery chargin */
 /* {{{ */
-#waybar.main #custom-battery.charging {
+#waybar.main #battery.charging {
   color: @misc;
   animation-iteration-count: infinite;
   animation-direction: alternate;
@@ -547,7 +539,7 @@ tooltip {
 }
 
 /* Set "battery bar" style */
-#waybar.indicator #custom-batteryindicator {
+#waybar.indicator #batteryindicator {
   border: 2.5px solid @sepepator;
   background: transparent;
   box-shadow:
@@ -563,7 +555,7 @@ tooltip {
 }
 
 /* Blink red when battery is very low */
-#waybar.indicator #custom-batteryindicator.critical {
+#waybar.indicator #batteryindicator.critical {
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-name: blink-critical-battery;
@@ -572,7 +564,7 @@ tooltip {
 }
 
 /* Blink red twice when battry is low battery */
-#waybar.indicator #custom-batteryindicator.warning {
+#waybar.indicator #batteryindicator.warning {
   animation-iteration-count: 4;
   animation-direction: alternate;
   animation-name: blink-warning-battery;
@@ -581,7 +573,7 @@ tooltip {
 }
 
 /* Blink once red when disconnected from AC */
-#waybar.indicator #custom-batteryindicator.discharging {
+#waybar.indicator #batteryindicator.discharging {
   animation-iteration-count: 2;
   animation-direction: alternate;
   animation-name: blink-discharging-battery;
@@ -590,7 +582,7 @@ tooltip {
 }
 
 /* Blink once cyan when plugged to AC */
-#waybar.indicator #custom-batteryindicator.charging {
+#waybar.indicator #batteryindicator.charging {
   animation-iteration-count: 2;
   animation-direction: alternate;
   animation-name: blink-charging-battery;
@@ -599,12 +591,13 @@ tooltip {
 }
 
 /* Blink cyan twice when battery is full */
-#waybar.indicator #custom-batteryindicator.full {
+#waybar.indicator #batteryindicator.full {
   animation-iteration-count: 4;
   animation-direction: alternate;
   animation-name: blink-full-battery;
   animation-duration: 0.2s;
   animation-timing-function: steps(15);
 }
+
 
 /* }}} */

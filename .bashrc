@@ -113,6 +113,7 @@ fi
 
 export EDITOR=/usr/bin/nvim
 export BROWSER="flatpak run app.zen_browser.zen"
+export FILEMANAGER="/usr/bin/yazi"
 
 for sh in /etc/bash/bashrc.d/* ; do
 	[[ -r ${sh} ]] && source "${sh}"

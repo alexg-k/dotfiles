@@ -8,8 +8,8 @@ decorations_theme_variant = "Dark"
 vi_mode_style = {shape = "Block", blinking = "On"}
 blink_interval = 300
 
-[font.normal]
-family = "JetbrainsMono Nerd Font"
+[font]
+normal.family = "JetbrainsMono Nerd Font"
 
 [colors.primary]
 background = "#1e1e2e"
