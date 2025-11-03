@@ -1,4 +1,53 @@
 [mgr]
-
 show_hidden = false
 show_symlink = true
+
+[opener]
+gimp = [{ run = 'gimp "$@"', desc = "Open with GIMP" }]
+inkscape = [{ run = 'inkscape "$@"', desc = "Open with Inkscape" }]
+libreoffice = [{ run = 'libreoffice "$@"', desc = "Open with LibreOffice" }]
+loupe = [{ run = 'flatpak run org.gnome.Loupe "$@"', desc = "Open gcode with Loupe" }]
+nvim = [{ run = 'nvim "$@"', desc = "Edit with Neovim" }]
+papers = [{ run = 'flatpak run org.gnome.Papers "$@"', desc = "Open PDF with GNOME Papers" }]
+prusa = [{ run = 'flatpak run com.prusa3d.PrusaSlicer "$@"', desc = "Open gcode with Prusa Slicer" }]
+fallback = [{ run = 'xdg-open "$@"', desc = "Open with system default" }]
+
+# Map file types to openers
+[open]
+rules = [
+  { mime = "application/pdf", use = "papers" },
+  { mime = "application/gcode", use = "prusa" },
+  { name = "image/svg", use = "inkscape" },
+  { mime = "image/*", use = "loupe" },
+  { mime = "video/*", use = "vlc" },
+  { mime = "audio/*", use = "vlc" },
+  { name = "*.xcf", use = "gimp" },
+  { name = "*.kdenlive", use = "kdenlive" },
+  { name = "*.3mf", use = "prusa" },
+  { mime = "application/vnd.oasis.opendocument.text", use = "libreoffice" },
+  { mime = "application/vnd.oasis.opendocument.text-template", use = "libreoffice" },
+  { mime = "application/msword", use = "libreoffice" },
+  { mime = "application/vnd.openxmlformats-officedocument.wordprocessingml.document", use = "libreoffice" },
+  { mime = "application/vnd.openxmlformats-officedocument.wordprocessingml.template", use = "libreoffice" },
+  { mime = "application/vnd.oasis.opendocument.spreadsheet", use = "libreoffice" },
+  { mime = "application/vnd.oasis.opendocument.spreadsheet-template", use = "libreoffice" },
+  { mime = "application/vnd.ms-excel", use = "libreoffice" },
+  { mime = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", use = "libreoffice" },
+  { mime = "application/vnd.openxmlformats-officedocument.spreadsheetml.template", use = "libreoffice" },
+  { mime = "application/vnd.oasis.opendocument.presentation", use = "libreoffice" },
+  { mime = "application/vnd.oasis.opendocument.presentation-template", use = "libreoffice" },
+  { mime = "application/vnd.ms-powerpoint", use = "libreoffice" },
+  { mime = "application/vnd.openxmlformats-officedocument.presentationml.presentation", use = "libreoffice" },
+  { mime = "application/vnd.openxmlformats-officedocument.presentationml.template", use = "libreoffice" },
+  { mime = "application/vnd.oasis.opendocument.graphics", use = "libreoffice" },
+  { mime = "application/vnd.oasis.opendocument.graphics-template", use = "libreoffice" },
+  { mime = "application/zip", use = "archive" },
+  { mime = "application/x-tar", use = "archive" },
+  { mime = "application/x-bzip2", use = "archive" },
+  { mime = "application/x-xz", use = "archive" },
+  { mime = "application/x-7z-compressed", use = "archive" },
+  { mime = "application/x-rar", use = "archive" },
+  { mime = "text/*", use = "nvim" }
+  { mime = "*", use = "fallback" }
+]
+

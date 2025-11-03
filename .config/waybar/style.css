@@ -74,8 +74,8 @@
 /* {{{ */
 #waybar.main {
   background: @background2;
-  font-family: "JetBrainsMono Nerd Font";
-  font-size: 9pt;
+  font-family: "JetBrainsMono Nerd Font Proto";
+  font-size: 12pt;
   font-weight: 600;
   color: @text;
   border-radius: 6pt;

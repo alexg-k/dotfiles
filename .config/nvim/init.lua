@@ -693,9 +693,20 @@ require("lazy").setup({
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
 				clangd = {},
+				ltex = {
+					language = "en-GB, de-DE",
+				},
 				-- gopls = {},
-				-- pyright = {},
-				-- rust_analyzer = {},
+				pyright = {},
+				rust_analyzer = {},
+				bashls = {},
+				docker_language_server = {},
+				html = {},
+				-- java_language_server = {},
+				matlab_ls = {},
+				marksman = {},
+				neocmake = {},
+				yamlls = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
 				-- Some languages (like typescript) have entire language plugins that can be useful:
