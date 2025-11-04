@@ -47,7 +47,7 @@ rules = [
   { mime = "application/x-xz", use = "archive" },
   { mime = "application/x-7z-compressed", use = "archive" },
   { mime = "application/x-rar", use = "archive" },
-  { mime = "text/*", use = "nvim" }
+  { mime = "text/*", use = "nvim" },
   { mime = "*", use = "fallback" }
 ]
 
