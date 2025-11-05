@@ -159,5 +159,3 @@ ex ()
 
 # enable vi mode (use by pressing ESCAPE and exit by pressing 'i'))
 set -o vi
-
-export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket

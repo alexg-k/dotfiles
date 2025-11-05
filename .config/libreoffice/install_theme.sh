@@ -2,7 +2,7 @@
 echo "Installation for mocha - blue"
 echo "Copying palette to config directory ..."
 if [ "$(uname)" = "Linux" ]; then
-  fname="${XDG_CONFIG_HOME:-$HOME/.config}"/libreoffice/*/user/registrymodifications.xcu
+  fname="${XDG_CONFIG_HOME:-$HOME/.var/app/org.libreoffice.LibreOffice/config}"/libreoffice/*/user/registrymodifications.xcu
   fname="$(realpath $fname)" # expand
 elif [ "$(uname)" = "Darwin" ]; then
   cd "$HOME/Library/Application Support/LibreOffice"/*/user # no realpath on macos
@@ -20,9 +20,9 @@ cp -i "$fname" registrymodifications.xcu.$(date -u +"%Y-%m-%dT%H:%M:%SZ")bak
 if ! [ -f "$fname" ]; then
   echo "Settings file doesn't exist in expected location. Aborting ..."
   exit 1
-# elif ! tail -n1 "$fname" | grep -E -q '^</oor:items>$'; then
-#   echo "Settings file doesn't match expected format. Aborting ..."
-#   exit 1
+elif ! tail -n1 "$fname" | grep -E -q '^</oor:items>$'; then
+  echo "Settings file doesn't match expected format. Aborting ..."
+  exit 1
 fi
 
 # Insert theme between last two lines if not present
