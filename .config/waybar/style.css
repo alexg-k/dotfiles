@@ -260,7 +260,7 @@
 /* Battery chargin */
 /* {{{ */
 #waybar.main #battery.charging {
-  color: @misc;
+  color: @audio;
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-name: blink-modifier-text;
