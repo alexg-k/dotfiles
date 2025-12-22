@@ -107,6 +107,7 @@
 #waybar.main #memory.swap,
 #waybar.main #memory.ram,
 #waybar.main #submap,
+#waybar.main #pulseaudio,
 #waybar.main #wireplumber.sink,
 #waybar.main #wireplumber.source,
 #waybar.main #temperature,
@@ -139,6 +140,7 @@
 
 #waybar.main #battery,
 #waybar.main #backlight,
+#waybar.main #pulseaudio,
 #waybar.main #wireplumber.sink,
 #waybar.main #wireplumber.source {
   color: @audio;
@@ -245,6 +247,7 @@
 
 /* Main bar warnings */
 /* {{{ */
+#waybar.main #pulseaudio.muted,
 #waybar.main #wireplumber.sink.muted,
 #waybar.main #wireplumber.source.source-muted {
   color: @sepepator;
