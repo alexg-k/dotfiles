@@ -275,7 +275,7 @@ hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("hyprshutdown -t 'Logging out...'"))
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("hyprshutdown -t 'Shutting down...' --post-cmd 'shutdown -P 0'"))
 hl.bind(mainMod .. " + CTRL + SHIFT + M", hl.dsp.exec_cmd("hyprshutdown -t 'Restarting...' --post-cmd 'reboot'"))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
-hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(fileManager))
+-- hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(email))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
@@ -283,6 +283,8 @@ hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 hl.bind(mainMod .. " + K", hl.dsp.layout("swapsplit"))    -- dwindle only
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({mode = "fullscreen", action = "toggle"}))
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({mode = "maximized", action = "toggle"}))
 hl.bind(mainMod .. " + Y", hl.dsp.exec_cmd(freetube))
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(freecad))
 
