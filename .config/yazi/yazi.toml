@@ -3,13 +3,16 @@ show_hidden = false
 show_symlink = true
 
 [opener]
+archive = [{ run = 'ya pub extract --list %s', desc = "Extract here" }]
 gimp = [{ run = 'gimp %s', desc = "Open with GIMP" }]
 inkscape = [{ run = 'inkscape %s', desc = "Open with Inkscape" }]
+kdenlive = [{ run = 'flatpak run org.kde.kdenlive %s', desc = "Open with Kdenlive", orphan = true }]
 libreoffice = [{ run = 'libreoffice %s', desc = "Open with LibreOffice" }]
 loupe = [{ run = 'flatpak run org.gnome.Loupe %s', desc = "Open image with Loupe" }]
 nvim = [{ run = 'nvim %s', desc = "Edit with Neovim" }]
 papers = [{ run = 'flatpak run org.gnome.Papers %s', desc = "Open PDF with GNOME Papers" }]
 prusa = [{ run = 'flatpak run com.prusa3d.PrusaSlicer %s', desc = "Open gcode with Prusa Slicer" }]
+vlc = [{ run = 'flatpak run org.videolan.VLC %s', desc = "Play with VLC", orphan = true }]
 fallback = [{ run = 'xdg-open %s1', desc = "Open with system default" }]
 
 # Map file types to openers
@@ -21,9 +24,9 @@ rules = [
   { mime = "image/*", use = "loupe" },
   { mime = "video/*", use = "vlc" },
   { mime = "audio/*", use = "vlc" },
-  { mime = "*.xcf", use = "gimp" },
-  { mime = "*.kdenlive", use = "kdenlive" },
-  { mime = "*.3mf", use = "prusa" },
+  { url = "*.xcf", use = "gimp" },
+  { url = "*.kdenlive", use = "kdenlive" },
+  { url = "*.3mf", use = "prusa" },
   { mime = "application/vnd.oasis.opendocument.text", use = "libreoffice" },
   { mime = "application/vnd.oasis.opendocument.text-template", use = "libreoffice" },
   { mime = "application/msword", use = "libreoffice" },

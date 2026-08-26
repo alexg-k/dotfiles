@@ -53,7 +53,7 @@
     "format": " {percentage_used}%",
     "tooltip": "{}",
     "tooltip-format": "Free {free}",
-    "on-click": "qdirstat & aplay ~/.config/sounds/interact.wav",
+    "on-click": "qdirstat",
     "states": {
       "warning": 85,
       "critical": 95
@@ -154,7 +154,7 @@
     "format-de": "German",
     "format-il": "עברית",
     "min-length": 8,
-    "on-click": "hyprctl switchxkblayout current next & aplay ~/.config/sounds/interact.wav",
+    "on-click": "hyprctl switchxkblayout current next",
     "tooltip": false,
     "class": "language"
   },
@@ -185,7 +185,7 @@
     "tooltip": "{}",
     "tooltip-format-wifi": "{ifname}\n{essid}\n{signalStrength}% \n{frequency} GHz\n󰇚 {bandwidthDownBits}\n󰕒 {bandwidthUpBits}",
     "tooltip-format-ethernet": "{ifname}\n󰇚 {bandwidthDownBits} \n󰕒 {bandwidthUpBits}",
-    "on-click": "iwgtk& aplay ~/.config/sounds/interact.wav",
+    "on-click": "iwgtk",
     "format-icons": ["󰤫", "󰤟", "󰤢", "󰤥", "󰤨"],
     "states": {
       "normal": 25
@@ -217,8 +217,7 @@
 
   "hyprland/window": {
     "format": "{title}",
-    "max-length": 48,
-    "tooltip": false,
+    "max-length": 96,
     "icon": true,
     "icon-size": 18,
     "tooltip": true

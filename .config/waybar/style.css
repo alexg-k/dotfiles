@@ -116,7 +116,7 @@
 #waybar.main #disk {
   padding-left: 8pt;
   padding-right: 8pt;
-  background: @module_bg;
+  background: transparent;
 }
 
 #waybar.main #custom-weather {
@@ -391,7 +391,7 @@
 
 #waybar.main #custom-spacer1 {
   background-image: linear-gradient(63.435deg,
-      @transparent 47.5%,
+      transparent 47.5%,
       @sepepator 47.6%,
       @sepepator 52.4%,
       @background1 52.5%);
@@ -423,7 +423,7 @@
 
 #waybar.main #custom-spacer5 {
   background-image: linear-gradient(-63.435deg,
-      @transparent 47.5%,
+      transparent 47.5%,
       @sepepator 47.6%,
       @sepepator 52.4%,
       transparent 52.5%);
@@ -431,7 +431,7 @@
 
 #waybar.main #custom-spacer6 {
   background-image: linear-gradient(-63.435deg,
-      @transparent 47.5%,
+      transparent 47.5%,
       @sepepator 47.6%,
       @sepepator 52.4%,
       transparent 52.5%);
@@ -452,12 +452,11 @@
   background-size: 16px;
   background-position: 2px, 0px;
   background-repeat: no-repeat;
-  background-image: url("/home/jan-aarela/.config/hypr/themes/Mocha-Power/pacman.png");
 }
 #waybar.main #custom-launcher {
   padding-left: 12pt;
   padding-right: 8pt;
-  background: @module_bg;
+  background: transparent;
   color: @window;
 }
 
@@ -474,7 +473,7 @@ tooltip {
 }
 
 #waybar.main #tray menu {
-  background: @background;
+  background: @background3;
   border: 3px solid @caution;
   border-radius: 8px;
 }
