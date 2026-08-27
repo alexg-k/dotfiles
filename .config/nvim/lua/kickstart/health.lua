@@ -12,7 +12,7 @@ local check_version = function()
     return
   end
 
-  if vim.version.ge(vim.version(), '0.11') then
+  if vim.version.ge(vim.version(), '0.12') then
     vim.health.ok(string.format("Neovim version is: '%s'", verstr))
   else
     vim.health.error(string.format("Neovim out of date: '%s'. Upgrade to latest stable or nightly", verstr))
@@ -20,14 +20,20 @@ local check_version = function()
 end
 
 local check_external_reqs = function()
-  -- Basic utils: `git`, `make`, `unzip`
-  for _, exe in ipairs { 'git', 'make', 'unzip', 'rg' } do
+  for _, exe in ipairs { 'git', 'make', 'unzip', 'rg', 'fd', 'curl', 'tar', 'tree-sitter' } do
     local is_executable = vim.fn.executable(exe) == 1
     if is_executable then
       vim.health.ok(string.format("Found executable: '%s'", exe))
     else
       vim.health.warn(string.format("Could not find executable: '%s'", exe))
     end
+  end
+
+  local has_compiler = vim.iter({ 'cc', 'gcc', 'clang' }):any(function(exe) return vim.fn.executable(exe) == 1 end)
+  if has_compiler then
+    vim.health.ok 'Found a C compiler'
+  else
+    vim.health.warn 'Could not find a C compiler (cc, gcc, or clang)'
   end
 
   return true
