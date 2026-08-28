@@ -382,11 +382,14 @@ do
   -- change the command under that to load whatever the name of that colorscheme is.
   --
   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-  vim.pack.add { { src = gh 'catppuccin/nvim', name = 'catppuccin' } }
+  vim.pack.add { { src = "https://github.com/catppuccin/nvim", name = "catppuccin" } }
   ---@diagnostic disable-next-line: missing-fields
   require('catppuccin').setup {
     flavour = 'mocha',
     auto_integrations = true,
+    integrations = {
+      mini = { enabled = true },
+    },
   }
 
   -- Load the colorscheme here.
@@ -496,6 +499,9 @@ do
     --  All the info you're looking for is in `:help telescope.setup()`
     --
     defaults = {
+      -- mappings = {
+      --   i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+      -- },
       vimgrep_arguments = {
         'rg',
         '--color=never',

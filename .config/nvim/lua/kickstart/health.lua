@@ -29,13 +29,6 @@ local check_external_reqs = function()
     end
   end
 
-  local has_compiler = vim.iter({ 'cc', 'gcc', 'clang' }):any(function(exe) return vim.fn.executable(exe) == 1 end)
-  if has_compiler then
-    vim.health.ok 'Found a C compiler'
-  else
-    vim.health.warn 'Could not find a C compiler (cc, gcc, or clang)'
-  end
-
   return true
 end
 
