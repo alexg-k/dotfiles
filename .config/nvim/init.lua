@@ -712,7 +712,7 @@ do
   ---@type table<string, vim.lsp.Config>
   local servers = {
     clangd = {},
-    ltex = {
+    ltex_plus = {
       settings = {
         ltex = {
           language = 'de-DE',
