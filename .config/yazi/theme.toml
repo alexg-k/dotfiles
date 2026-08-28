@@ -56,5 +56,5 @@ prepend_files = [
 prepend_conds = [
 	{ if = "orphan", text = "", fg = "#f38ba8" },
 	{ if = "link", text = "", fg = "#cba6f7" },
-	{ if = "exec", text = "", fg = "#a6e3a1" },
+	{ if = "exec & !dir", text = "", fg = "#a6e3a1" },
 ]
