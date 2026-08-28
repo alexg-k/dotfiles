@@ -194,8 +194,13 @@ do
     underline = { severity = { min = vim.diagnostic.severity.WARN } },
 
     -- Can switch between these as you prefer
-    virtual_text = true, -- Text shows up at the end of the line
-    virtual_lines = false, -- Text shows up underneath the line, with virtual lines
+    virtual_text = { -- Text shows up at the end of the line
+      current_line = false,
+    },
+    virtual_lines = { -- Text shows up underneath the line, with virtual lines
+      current_line = true,
+      overflow = 'wrap',
+    },
 
     -- Auto open the float, so you can easily read the errors when jumping with `[d` and `]d`
     jump = {
@@ -208,7 +213,6 @@ do
       end,
     },
   }
-
   vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
   -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
@@ -715,7 +719,7 @@ do
     ltex_plus = {
       settings = {
         ltex = {
-          language = 'de-DE',
+          language = 'auto',
         },
       },
     },
