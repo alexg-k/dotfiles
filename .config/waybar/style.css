@@ -3,17 +3,15 @@
 @define-color background1 rgba(32, 32, 48, 1);
 @define-color background2 rgba(21, 21, 32, 0.8);
 @define-color background3 rgba(21, 21, 32, 1);
-@define-color sepepator #313244;
+@define-color separator #313244;
 @define-color warning #f38ba8;
 @define-color caution #45475a;
 @define-color performance #f5c2e7;
 @define-color audio #cba6f7;
 @define-color misc #94e2d5;
 @define-color date #a6e3a1;
-@define-color work #b4befe;
 @define-color window #b4befe;
 @define-color resize #eba0ac;
-@define-color process #89b4fa;
 @define-color text #000000;
 /* }}} */
 
@@ -51,14 +49,14 @@
 
 @keyframes blink-critical-text {
   to {
-    color: @sepepator;
+    color: @separator;
   }
 }
 
 /* Keyframes for main bar modifiers */
 @keyframes blink-modifier-text {
   to {
-    color: @sepepator;
+    color: @separator;
   }
 }
 
@@ -97,7 +95,6 @@
 /* {{{ */
 #waybar.main #custom-gpu-usage,
 #waybar.main #custom-weather,
-#waybar.main #keyboard-state,
 #waybar.main #network,
 #waybar.main #battery,
 #waybar.main #backlight,
@@ -107,11 +104,9 @@
 #waybar.main #memory.swap,
 #waybar.main #memory.ram,
 #waybar.main #submap,
-#waybar.main #pulseaudio,
 #waybar.main #wireplumber.sink,
 #waybar.main #wireplumber.source,
 #waybar.main #temperature,
-#waybar.main #traym,
 #waybar.main #window,
 #waybar.main #disk {
   padding-left: 8pt;
@@ -140,7 +135,6 @@
 
 #waybar.main #battery,
 #waybar.main #backlight,
-#waybar.main #pulseaudio,
 #waybar.main #wireplumber.sink,
 #waybar.main #wireplumber.source {
   color: @audio;
@@ -158,7 +152,7 @@
   background: @background2;
 }
 
-#waybar.main #custom.launcher,
+#waybar.main #custom-launcher,
 #waybar.main #clock {
   border-radius: 0pt 6pt 6pt 0pt;
 }
@@ -247,10 +241,9 @@
 
 /* Main bar warnings */
 /* {{{ */
-#waybar.main #pulseaudio.muted,
 #waybar.main #wireplumber.sink.muted,
 #waybar.main #wireplumber.source.source-muted {
-  color: @sepepator;
+  color: @separator;
 }
 
 #waybar.main #battery.warning,
@@ -285,12 +278,12 @@
   margin-bottom: -6px;
   background-image: linear-gradient(-243.435deg,
       @background2 17px,
-      @sepepator 17px,
-      @sepepator 21px,
+      @separator 17px,
+      @separator 21px,
       transparent 21px,
       transparent calc(100% -22px),
-      @sepepator calc(100% -22px),
-      @sepepator calc(100% - 18px),
+      @separator calc(100% -22px),
+      @separator calc(100% - 18px),
       transparent calc(100% - 18px));
 }
 
@@ -329,12 +322,12 @@
   color: @window;
   background-image: linear-gradient(-63.435deg,
       transparent 24%,
-      @sepepator 24%,
-      @sepepator 28%,
+      @separator 24%,
+      @separator 28%,
       @background1 28%,
       @background1 73%,
-      @sepepator 73%,
-      @sepepator 76%,
+      @separator 73%,
+      @separator 76%,
       transparent 76%);
 }
 
@@ -343,26 +336,11 @@
   color: @window;
 }
 
-/* #waybar.main #workspaces button.active:hover { */
-/*   color: @background2; */
-/*   background-image: linear-gradient( */
-/*     -63.435deg, */
-/*     transparent 24%, */
-/*     @sepepator 24%, */
-/*     @sepepator 28%, */
-/*     @window 28%, */
-/*     @window 73%, */
-/*     @sepepator 73%, */
-/*     @sepepator 76%, */
-/*     transparent 76% */
-/*   ); */
-/* } */
-
 /* Special workplace animation */
 #waybar.main #workspaces button.special.active {
   transition: all 0s ease;
   border: 1.5px solid transparent;
-  color: @sepepator;
+  color: @separator;
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-name: blink-special-workspace;
@@ -377,9 +355,7 @@
 #waybar.main #custom-spacer1,
 #waybar.main #custom-spacer2,
 #waybar.main #custom-spacer3,
-#waybar.main #custom-spacer4,
-#waybar.main #custom-spacer5,
-#waybar.main #custom-spacer6 {
+#waybar.main #custom-spacer4 {
   font-size: 16pt;
   font-weight: bold;
   color: transparent;
@@ -392,67 +368,39 @@
 #waybar.main #custom-spacer1 {
   background-image: linear-gradient(63.435deg,
       transparent 47.5%,
-      @sepepator 47.6%,
-      @sepepator 52.4%,
+      @separator 47.6%,
+      @separator 52.4%,
       @background1 52.5%);
 }
 
 #waybar.main #custom-spacer2 {
   background-image: linear-gradient(63.435deg,
       @background1 47.5%,
-      @sepepator 47.6%,
-      @sepepator 52.4%,
+      @separator 47.6%,
+      @separator 52.4%,
       @background2 52.5%);
 }
 
 #waybar.main #custom-spacer3 {
   background-image: linear-gradient(63.435deg,
       @background2 47.5%,
-      @sepepator 47.6%,
-      @sepepator 52.4%,
+      @separator 47.6%,
+      @separator 52.4%,
       @background1 52.5%);
 }
 
 #waybar.main #custom-spacer4 {
   background-image: linear-gradient(63.435deg,
       @background1 47.5%,
-      @sepepator 47.6%,
-      @sepepator 52.4%,
+      @separator 47.6%,
+      @separator 52.4%,
       @background2 52.5%);
-}
-
-#waybar.main #custom-spacer5 {
-  background-image: linear-gradient(-63.435deg,
-      transparent 47.5%,
-      @sepepator 47.6%,
-      @sepepator 52.4%,
-      transparent 52.5%);
-}
-
-#waybar.main #custom-spacer6 {
-  background-image: linear-gradient(-63.435deg,
-      transparent 47.5%,
-      @sepepator 47.6%,
-      @sepepator 52.4%,
-      transparent 52.5%);
 }
 
 /* }}} */
 
-/* Custom tray icon */
+/* Launcher */
 /* {{{ */
-#waybar.main #custom-trayicon {
-  font-size: 11pt;
-  color: transparent;
-  /* font-weight: bold; */
-  font-style: italic;
-  background: transparent;
-  padding-right: 0pt;
-  padding-left: 2pt;
-  background-size: 16px;
-  background-position: 2px, 0px;
-  background-repeat: no-repeat;
-}
 #waybar.main #custom-launcher {
   padding-left: 12pt;
   padding-right: 8pt;
@@ -471,135 +419,5 @@ tooltip {
   font-weight: 500;
   font-family: "JetBrains Mono Nerd Font";
 }
-
-#waybar.main #tray menu {
-  background: @background3;
-  border: 3px solid @caution;
-  border-radius: 8px;
-}
-
-/* }}} */
-
-/* Indicator bar keyframes */
-/* {{{ */
-@keyframes blink-critical-battery {
-  to {
-    border-color: @warning;
-    box-shadow:
-      inset 0px 3px 4px -5px @warning,
-      inset 0px -3px 4px -5px @warning;
-  }
-}
-
-@keyframes blink-warning-battery {
-  to {
-    border-color: @warning;
-    box-shadow:
-      inset 0px 3px 4px -5px @warning,
-      inset 0px -3px 4px -5px @warning;
-  }
-}
-
-@keyframes blink-discharging-battery {
-  to {
-    border-color: @warning;
-    box-shadow:
-      inset 0px 3px 4px -5px @warning,
-      inset 0px -3px 4px -5px @warning;
-  }
-}
-
-@keyframes blink-charging-battery {
-  to {
-    border-color: @misc;
-    box-shadow:
-      inset 0px 3px 4px -5px @misc,
-      inset 0px -3px 4px -5px @misc;
-  }
-}
-
-@keyframes blink-full-battery {
-  to {
-    border-color: @misc;
-    box-shadow:
-      inset 0px 3px 4px -5px @misc,
-      inset 0px -3px 4px -5px @misc;
-  }
-}
-
-/* }}} */
-
-/* indicator bar battery module */
-/* {{{ */
-
-/* Set defaults for indicator bar */
-#waybar.indicator {
-  font-size: 10px;
-  /* This makes indicator thicker */
-  color: rgba(0, 0, 0, 0);
-  background: rgba(0, 0, 0, 0);
-}
-
-/* Set "battery bar" style */
-#waybar.indicator #batteryindicator {
-  border: 2.5px solid @sepepator;
-  background: transparent;
-  box-shadow:
-    inset 0px 4px 4px -5px rgba(0, 0, 0, 0.5),
-    inset 0px -4px 4px -5px rgba(0, 0, 0, 0.5);
-
-
-  border-radius: 7px;
-  padding-left: 2247px;
-  /* Use this for padding:  */
-  /* (H_rez / scaling) - L_margin -R_margin - 2 * border - (font-size / 2)*/
-  /* For example: (2880px / 1.25) - 24 - 24 - 2 * 2.5 - (27 / 2) = 2237.5px */
-}
-
-/* Blink red when battery is very low */
-#waybar.indicator #batteryindicator.critical {
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  animation-name: blink-critical-battery;
-  animation-duration: 1s;
-  animation-timing-function: steps(15);
-}
-
-/* Blink red twice when battry is low battery */
-#waybar.indicator #batteryindicator.warning {
-  animation-iteration-count: 4;
-  animation-direction: alternate;
-  animation-name: blink-warning-battery;
-  animation-duration: 0.2s;
-  animation-timing-function: steps(15);
-}
-
-/* Blink once red when disconnected from AC */
-#waybar.indicator #batteryindicator.discharging {
-  animation-iteration-count: 2;
-  animation-direction: alternate;
-  animation-name: blink-discharging-battery;
-  animation-duration: 0.3s;
-  animation-timing-function: steps(15);
-}
-
-/* Blink once cyan when plugged to AC */
-#waybar.indicator #batteryindicator.charging {
-  animation-iteration-count: 2;
-  animation-direction: alternate;
-  animation-name: blink-charging-battery;
-  animation-duration: 0.3s;
-  animation-timing-function: steps(15);
-}
-
-/* Blink cyan twice when battery is full */
-#waybar.indicator #batteryindicator.full {
-  animation-iteration-count: 4;
-  animation-direction: alternate;
-  animation-name: blink-full-battery;
-  animation-duration: 0.2s;
-  animation-timing-function: steps(15);
-}
-
 
 /* }}} */

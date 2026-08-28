@@ -14,11 +14,7 @@
 
   "modules-left": [
     "custom/launcher",
-    // "group/traym",
-    // "custom/spacer5",
     "hyprland/workspaces",
-    // "custom/spacer2",
-    // "custom/spacer6",
     "hyprland/submap",
     "hyprland/window"
   ],
@@ -46,14 +42,13 @@
   // Modules
   "custom/launcher": {
     "format": "󰣇",
-    "on-click": "wofi --allow-images -i --show drun",
+    "on-click": "fuzzel",
   },
   "disk": {
     "interval": 16,
     "format": " {percentage_used}%",
-    "tooltip": "{}",
+    "tooltip": true,
     "tooltip-format": "Free {free}",
-    "on-click": "qdirstat",
     "states": {
       "warning": 85,
       "critical": 95
@@ -63,22 +58,16 @@
   "custom/weather": {
     "format": "{}°",
     "tooltip": true,
-    "interval": 60,
+    "interval": 1800,
     "exec": "wttrbar --nerd --location Ascheffel",
     "return-type": "json"
-  },
-
-  "group/traym": {
-    "orientation": "horizontal",
-    "drawer": {},
-    "modules": ["custom/trayicon", "tray"]
   },
 
   "group/storage": {
     "orientation": "horizontal",
     "drawer": {
-      "transition-duration": "500",
-      "transition-left-to-right": "true",
+      "transition-duration": 500,
+      "transition-left-to-right": true,
       "children-class": "drawer-child"
       //"click-to-reveal": "false"
     },
@@ -119,8 +108,8 @@
   },
 
   "clock": {
-    "interval": 1,
-    "format": " {:%H:%M:%S    %a %d.%m.}",
+    "interval": 60,
+    "format": " {:%H:%M    %a %d.%m.}",
     "tooltip-format": "{calendar}",
     "calendar": {
       "weeks-pos": "left",
@@ -166,14 +155,14 @@
       "warning": 80,
       "critical": 95
     },
-    "tooltip": "{}",
+    "tooltip": true,
     "tooltip-format": "{used}/{total} GiB"
   },
 
   "memory#swap": {
     "interval": 30,
     "format": "󰾵 {swapPercentage}%",
-    "tooltip": "{}",
+    "tooltip": true,
     "tooltip-format": "{swapUsed}/{swapTotal}GiB"
   },
 
@@ -182,29 +171,13 @@
     "format": "󱘖  Offline",
     "format-wifi": "{icon} {bandwidthDownBits}",
     "format-ethernet": "󰈀 {bandwidthDownBits}",
-    "tooltip": "{}",
+    "tooltip": true,
     "tooltip-format-wifi": "{ifname}\n{essid}\n{signalStrength}% \n{frequency} GHz\n󰇚 {bandwidthDownBits}\n󰕒 {bandwidthUpBits}",
     "tooltip-format-ethernet": "{ifname}\n󰇚 {bandwidthDownBits} \n󰕒 {bandwidthUpBits}",
-    "on-click": "iwgtk",
     "format-icons": ["󰤫", "󰤟", "󰤢", "󰤥", "󰤨"],
     "states": {
       "normal": 25
     }
-  },
-
-  "network#up": {
-    "interval": 10,
-    "format": " ",
-    "format-wifi": "󰕒 {bandwidthUpBits}",
-    "format-ethernet": "󰕒 {bandwidthUpBits}",
-    "format-disconnected": " ",
-  },
-
-  "network#down": {
-    "interval": 10,
-    "format": "󰇚 {bandwidthDownBits}",
-    "format-wifi": "󰇚 {bandwidthDownBits}",
-    "format-ethernet": "󰇚 {bandwidthDownBits}",
   },
 
   "hyprland/submap": {
@@ -253,21 +226,6 @@
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
     "scroll-step": 5
   },
-  "pulseaudio": {
-    "format": "{volume}% {icon}",
-    "format-bluetooth": "{volume}% {icon}",
-    "format-muted": "{volume}% ",
-    "format-icons": {
-      "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
-      "alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "",
-      "headphones": "",
-      "handsfree": "",
-      "headset": "",
-      "default": ["", "", ""]
-    },
-    "scroll-step": 1,
-  },
-
   "temperature": {
     "hwmon-path": "/sys/class/hwmon/hwmon0/temp1_input",
     "critical-threshold": 90,
@@ -275,16 +233,6 @@
     "format-critical": "󰀦 {temperatureC}°C",
     "format": "{icon} {temperatureC}°C",
     "format-icons": ["", "", "", "", ""],
-    "tooltip": false
-  },
-
-  "tray": {
-    "icon-size": 18,
-    "spacing": 8
-  },
-
-  "custom/spacer": {
-    "format": " ",
     "tooltip": false
   },
 
@@ -306,27 +254,5 @@
   "custom/spacer4": {
     "format": "",
     "tooltip": false
-  },
-
-  "custom/spacer5": {
-    "format": "",
-    "tooltip": false
-  },
-
-  "custom/spacer6": {
-    "format": "",
-    "tooltip": false
-  },
-
-  "custom/trayicon": {
-    // "format": " ",
-    // "format": "Zäni",
-    "format": "󰣇 ",
-    // "format": " ",
-    // "format": "ᗧ ",
-    "tooltip": false,
-    "on-click": "", //" bash ~/.config/scripts/pacman.sh",
-    "on-scroll-up": "",
-    "on-scroll-down": "",
   }
 }
