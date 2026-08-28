@@ -30,8 +30,8 @@ hl.monitor({
 
 -- Set programs that you use
 local terminal    = "kitty"
-local fileManager = "nautilus"
-local menu        = "hyprlauncher"
+local fileManager = "kitty -e yazi"
+local menu        = "fuzzel"
 local browser     = "flatpak run app.zen_browser.zen"
 local email       = "flatpak run org.mozilla.Thunderbird"
 local freetube    = "flatpak run io.freetubeapp.FreeTube"
@@ -49,7 +49,7 @@ local nextcloud   = "flatpak run com.nextcloud.desktopclient.nextcloud"
 -- Or execute your favorite apps at launch like this:
 --
 hl.on("hyprland.start", function () 
-  hl.exec_cmd("waybar & hyprpaper & hypridle & dunst & copyq --start-server")
+  hl.exec_cmd("waybar & hyprpaper & hypridle & dunst")
   hl.exec_cmd(terminal)
   hl.exec_cmd(browser)
   hl.exec_cmd(keepassxc)
@@ -274,7 +274,7 @@ hl.bind(mainMod .. " + M",                hl.dsp.exec_cmd("hyprshutdown -t 'Logg
 hl.bind(mainMod .. " + SHIFT + M",        hl.dsp.exec_cmd("hyprshutdown -t 'Shutting down...' --post-cmd 'shutdown -P 0'"))
 hl.bind(mainMod .. " + CTRL + SHIFT + M", hl.dsp.exec_cmd("hyprshutdown -t 'Restarting...' --post-cmd 'reboot'"))
 hl.bind(mainMod .. " + L",                hl.dsp.exec_cmd("hyprlock"))
--- hl.bind(mainMod .. " + F",                hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + G",                hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + B",                hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + E",                hl.dsp.exec_cmd(email))
 hl.bind(mainMod .. " + V",                hl.dsp.window.float({ action = "toggle" }))
