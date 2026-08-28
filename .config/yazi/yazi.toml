@@ -4,29 +4,28 @@ show_symlink = true
 
 [opener]
 archive = [{ run = 'ya pub extract --list %s', desc = "Extract here" }]
-gimp = [{ run = 'gimp %s', desc = "Open with GIMP" }]
-inkscape = [{ run = 'inkscape %s', desc = "Open with Inkscape" }]
+gimp = [{ run = 'gimp %s', desc = "Open with GIMP", orphan = true }]
+inkscape = [{ run = 'inkscape %s', desc = "Open with Inkscape", orphan = true }]
 kdenlive = [{ run = 'flatpak run org.kde.kdenlive %s', desc = "Open with Kdenlive", orphan = true }]
-libreoffice = [{ run = 'libreoffice %s', desc = "Open with LibreOffice" }]
-loupe = [{ run = 'flatpak run org.gnome.Loupe %s', desc = "Open image with Loupe" }]
-nvim = [{ run = 'nvim %s', desc = "Edit with Neovim" }]
-papers = [{ run = 'flatpak run org.gnome.Papers %s', desc = "Open PDF with GNOME Papers" }]
-prusa = [{ run = 'flatpak run com.prusa3d.PrusaSlicer %s', desc = "Open gcode with Prusa Slicer" }]
+libreoffice = [{ run = 'libreoffice %s', desc = "Open with LibreOffice", orphan = true }]
+loupe = [{ run = 'flatpak run org.gnome.Loupe %s', desc = "Open image with Loupe", orphan = true }]
+editor = [{ run = '$EDITOR %s', desc = "Edit with $EDITOR", block = true }]
+papers = [{ run = 'flatpak run org.gnome.Papers %s', desc = "Open PDF with GNOME Papers", orphan = true }]
+prusa = [{ run = 'flatpak run com.prusa3d.PrusaSlicer %s', desc = "Open gcode with Prusa Slicer", orphan = true }]
 vlc = [{ run = 'flatpak run org.videolan.VLC %s', desc = "Play with VLC", orphan = true }]
-fallback = [{ run = 'xdg-open %s1', desc = "Open with system default" }]
 
 # Map file types to openers
 [open]
-rules = [
+prepend_rules = [
   { mime = "application/pdf", use = "papers" },
-  { mime = "application/gcode", use = "prusa" },
-  { mime = "image/svg", use = "inkscape" },
+  { url  = "*.gcode", use = "prusa" },
+  { mime = "image/svg+xml", use = "inkscape" },
+  { url  = "*.xcf", use = "gimp" },
   { mime = "image/*", use = "loupe" },
   { mime = "video/*", use = "vlc" },
   { mime = "audio/*", use = "vlc" },
-  { url = "*.xcf", use = "gimp" },
-  { url = "*.kdenlive", use = "kdenlive" },
-  { url = "*.3mf", use = "prusa" },
+  { url  = "*.kdenlive", use = "kdenlive" },
+  { url  = "*.3mf", use = "prusa" },
   { mime = "application/vnd.oasis.opendocument.text", use = "libreoffice" },
   { mime = "application/vnd.oasis.opendocument.text-template", use = "libreoffice" },
   { mime = "application/msword", use = "libreoffice" },
@@ -50,6 +49,5 @@ rules = [
   { mime = "application/x-xz", use = "archive" },
   { mime = "application/x-7z-compressed", use = "archive" },
   { mime = "application/x-rar", use = "archive" },
-  { mime = "text/*", use = "nvim" },
-  { mime = "*", use = "fallback" }
+  { mime = "text/*", use = "editor" }
 ]
