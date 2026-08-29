@@ -1,0 +1,57 @@
+ex() {
+	if (($# != 1)); then
+		printf 'Usage: ex <archive>\n' >&2
+		return 2
+	fi
+
+	local archive=$1
+	if [[ ! -f $archive ]]; then
+		printf '%q is not a valid file\n' "$archive" >&2
+		return 1
+	fi
+
+	case $archive in
+		*.tar.bz2 | *.tbz2) tar -xjf "$archive" ;;
+		*.tar.gz | *.tgz)  tar -xzf "$archive" ;;
+		*.tar)             tar -xf "$archive" ;;
+		*.bz2)             bunzip2 -- "$archive" ;;
+		*.rar)             unrar x -- "$archive" ;;
+		*.gz)              gunzip -- "$archive" ;;
+		*.zip)             unzip -- "$archive" ;;
+		*.Z)               uncompress -- "$archive" ;;
+		*.7z)              7z x -- "$archive" ;;
+		*)
+			printf '%q cannot be extracted by ex\n' "$archive" >&2
+			return 2
+			;;
+	esac
+}
+
+# Let Yazi communicate its final directory back to the current shell.
+y() {
+	local tmp cwd status
+	tmp=$(mktemp -t yazi-cwd.XXXXXX) || return
+
+	command yazi "$@" --cwd-file="$tmp"
+	status=$?
+	if ((status == 0)) && IFS= read -r -d '' cwd < "$tmp" &&
+		[[ -n $cwd && $cwd != "$PWD" && -d $cwd ]]; then
+		builtin cd -- "$cwd" || status=$?
+	fi
+	command rm -f -- "$tmp"
+	return "$status"
+}
+
+# Grant only the container's root user X11 access, and revoke it afterward.
+docker_x11() {
+	if [[ -z ${DISPLAY:-} ]]; then
+		printf 'docker_x11: DISPLAY is not set\n' >&2
+		return 1
+	fi
+
+	command xhost +SI:localuser:root >/dev/null || return
+	command docker "$@"
+	local status=$?
+	command xhost -SI:localuser:root >/dev/null 2>&1
+	return "$status"
+}

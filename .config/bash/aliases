@@ -1,0 +1,11 @@
+alias moos='docker compose -f ~/Docker/moos-ivp-marvin/compose.yml run --rm moos-ivp-marvin'
+alias ros='docker compose -f ~/Docker/ros2/compose.yml run --rm ros2'
+alias ros-moos='docker compose -f ~/Docker/ros2/compose.yml run --rm ros2-moos'
+alias kali='docker compose -f ~/Docker/kali/compose.yml run --rm kali-linux'
+
+alias dconfigure='BUILD_TYPE=Debug docker compose run --rm configure'
+alias dbuild='BUILD_TYPE=Debug docker compose run --rm build'
+alias drun='BUILD_TYPE=Debug docker compose run --rm run'
+alias dpackage='BUILD_TYPE=Debug docker compose run --rm package'
+alias dtest='BUILD_TYPE=Debug docker compose run --rm test'
+alias dformat='BUILD_TYPE=Debug docker compose run --rm format'

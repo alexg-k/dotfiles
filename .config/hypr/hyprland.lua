@@ -68,6 +68,12 @@ hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("QT_QPA_PLATFORM", "wayland")
 hl.env("SSH_AUTH_SOCK", "/run/user/1000/ssh-agent.socket")
 hl.env("JAVA_HOME", "/usr/lib/jvm/default")
+hl.env("EDITOR", "/usr/bin/nvim")
+hl.env("VISUAL", "/usr/bin/nvim")
+hl.env("BROWSER", "/home/alex/.config/bash/zen-browser")
+hl.env("FILEMANAGER", "/usr/bin/yazi")
+hl.env("PAGER", "/usr/bin/less")
+hl.env("LESS", "-FRX")
 
 
 -----------------------
