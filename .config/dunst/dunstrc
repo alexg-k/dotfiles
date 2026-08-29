@@ -6,16 +6,22 @@ offset = (20, 30)
 corner_radius = 10
 transparency = 10
 font = "Monospace 10"
+notification_limit = 20
+gap_size = 8
+stack_duplicates = false
 
 [urgency_low]
 background = "#1e1e2e"
 foreground = "#cdd6f4"
+timeout = 20s
 
 [urgency_normal]
 background = "#1e1e2e"
 foreground = "#cdd6f4"
+timeout = 20s
 
 [urgency_critical]
 background = "#1e1e2e"
 foreground = "#cdd6f4"
 frame_color = "#fab387"
+timeout = 0
