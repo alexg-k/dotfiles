@@ -32,6 +32,7 @@
     "wireplumber#sink",
     // "backlight",
     // "battery",
+    "idle_inhibitor",
     "custom/spacer3",
     "hyprland/language",
     "custom/spacer4",
@@ -107,6 +108,16 @@
     "format-icons": ["", "", "", "", ""],
   },
 
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "󰅶",
+      "deactivated": "󰾪"
+    },
+    "tooltip-format-activated": "Idle inhibition enabled",
+    "tooltip-format-deactivated": "Idle inhibition disabled"
+  },
+
   "clock": {
     "interval": 60,
     "format": " {:%H:%M    %a %d.%m.}",
@@ -172,8 +183,8 @@
     "format-wifi": "{icon} {bandwidthDownBits}",
     "format-ethernet": "󰈀 {bandwidthDownBits}",
     "tooltip": true,
-    "tooltip-format-wifi": "{ifname}\n{essid}\n{signalStrength}% \n{frequency} GHz\n󰇚 {bandwidthDownBits}\n󰕒 {bandwidthUpBits}",
-    "tooltip-format-ethernet": "{ifname}\n󰇚 {bandwidthDownBits} \n󰕒 {bandwidthUpBits}",
+    "tooltip-format-wifi": "{ifname}\n{ipaddr}\n{essid}\n{signalStrength}% \n{frequency} GHz\n󰇚 {bandwidthDownBits}\n󰕒 {bandwidthUpBits}",
+    "tooltip-format-ethernet": "{ifname}\n{ipaddr}\n󰇚 {bandwidthDownBits} \n󰕒 {bandwidthUpBits}",
     "format-icons": ["󰤫", "󰤟", "󰤢", "󰤥", "󰤨"],
     "states": {
       "normal": 25

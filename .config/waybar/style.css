@@ -97,6 +97,7 @@
 #waybar.main #custom-weather,
 #waybar.main #network,
 #waybar.main #battery,
+#waybar.main #idle_inhibitor,
 #waybar.main #backlight,
 #waybar.main #clock,
 #waybar.main #cpu,
@@ -134,11 +135,16 @@
 }
 
 #waybar.main #battery,
+#waybar.main #idle_inhibitor,
 #waybar.main #backlight,
 #waybar.main #wireplumber.sink,
 #waybar.main #wireplumber.source {
   color: @audio;
   background: @background2;
+}
+
+#waybar.main #idle_inhibitor.activated {
+  color: @date;
 }
 
 #waybar.main #language {
