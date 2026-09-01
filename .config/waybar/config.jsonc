@@ -226,15 +226,16 @@
     "format": "{icon} {volume}%",
     "format-muted": "",
     "format-icons": ["", "", ""],
-    // "on-click": "helvum",
-    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-click-right": "~/.config/waybar/scripts/cycle-audio-sink.sh",
     "scroll-step": 5
   },
   "wireplumber#source": {
     "node-type": "Audio/Source",
     "format": " {volume}%",
     "format-muted": "",
-    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+    "on-click-right": "~/.config/waybar/scripts/cycle-audio-source.sh",
     "scroll-step": 5
   },
   "temperature": {
