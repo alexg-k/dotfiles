@@ -5,6 +5,7 @@ if status is-interactive
     set -g fish_prompt_pwd_dir_length 0
 
     fish_vi_key_bindings
+    bind -M insert ctrl-r history-pager
     set -g fish_cursor_default block
     set -g fish_cursor_insert line
     set -g fish_cursor_replace_one underscore
