@@ -14,7 +14,7 @@
 
   "modules-left": [
     "custom/launcher",
-    "hyprland/workspaces",
+    "ext/workspaces",
     "hyprland/submap",
     "hyprland/window"
   ],
@@ -207,13 +207,13 @@
     "tooltip": true
   },
 
-  "hyprland/workspaces": {
-    "disable-scroll-wraparound": true,
-    "smooth-scrolling-threshold": 4,
-    "enable-bar-scroll": true,
+  // Use the ext-workspaces protocol: Hyprland's legacy workspace IPC click
+  // handler is incompatible with the Lua dispatcher used by Hyprland >= 0.55.
+  "ext/workspaces": {
+    "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'",
+    "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'",
     "format": "{icon}",
-    "show-special": true,
-    "special-visible-only": false,
     "format-icons": {
       "magic": "",
       "10": "󰊴",
