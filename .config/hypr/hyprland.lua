@@ -31,13 +31,18 @@ hl.monitor({
 -- Set programs that you use
 local terminal    = "kitty"
 local fileManager = "kitty -e yazi"
-local menu        = "fuzzel"
+local menu        = "noctalia msg panel-toggle launcher"
 local browser     = "flatpak run app.zen_browser.zen"
 local email       = "flatpak run org.mozilla.Thunderbird"
 local freetube    = "flatpak run io.freetubeapp.FreeTube"
 local freecad     = "flatpak run org.freecad.FreeCAD"
 local keepassxc   = "flatpak run org.keepassxc.KeePassXC"
 local nextcloud   = "flatpak run com.nextcloud.desktopclient.nextcloud"
+local lock        = "noctalia msg session lock"
+local screenshot  = "noctalia msg screenshot-fullscreen"
+local logout      = "noctalia msg session logout"
+local reboot      = "noctalia msg session reboot"
+local shutdown    = "noctalia msg session shutdown"
 
 -------------------
 ---- AUTOSTART ----
@@ -49,7 +54,7 @@ local nextcloud   = "flatpak run com.nextcloud.desktopclient.nextcloud"
 -- Or execute your favorite apps at launch like this:
 --
 hl.on("hyprland.start", function () 
-  hl.exec_cmd("waybar & hyprpaper & hypridle & dunst")
+  hl.exec_cmd("noctalia")
   hl.exec_cmd(terminal)
   hl.exec_cmd(browser)
   hl.exec_cmd(keepassxc)
@@ -139,9 +144,8 @@ hl.config({
 
         blur = {
             enabled   = true,
-            size      = 15,
-            passes    = 1,
-            vibrancy  = 0.1696,
+            variant   = "frost",
+            size      = 10,
         },
     },
 
@@ -277,10 +281,10 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 hl.bind(mainMod .. " + T",                hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + W",                hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + W",        hl.dsp.window.kill())
-hl.bind(mainMod .. " + M",                hl.dsp.exec_cmd("hyprshutdown -t 'Logging out...'"))
-hl.bind(mainMod .. " + SHIFT + M",        hl.dsp.exec_cmd("hyprshutdown -t 'Shutting down...' --post-cmd 'shutdown -P 0'"))
-hl.bind(mainMod .. " + CTRL + SHIFT + M", hl.dsp.exec_cmd("hyprshutdown -t 'Restarting...' --post-cmd 'reboot'"))
-hl.bind(mainMod .. " + L",                hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mainMod .. " + M",                hl.dsp.exec_cmd(logout))
+hl.bind(mainMod .. " + SHIFT + M",        hl.dsp.exec_cmd(shutdown))
+hl.bind(mainMod .. " + CTRL + SHIFT + M", hl.dsp.exec_cmd(reboot))
+hl.bind(mainMod .. " + L",                hl.dsp.exec_cmd(lock))
 hl.bind(mainMod .. " + G",                hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + B",                hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + E",                hl.dsp.exec_cmd(email))
@@ -337,8 +341,7 @@ hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 
 -- Screenshots
-hl.bind("PRINT",         hl.dsp.exec_cmd("hyprshot -m window"))
-hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m output -m DP-1"))
+hl.bind("PRINT",         hl.dsp.exec_cmd(screenshot))
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
@@ -392,12 +395,6 @@ hl.window_rule({
 hl.window_rule({
     name = "keepassxc to magic",
     match = { class = "org.keepassxc.KeePassXC" },
-    workspace = "special:magic silent",
-})
-
-hl.window_rule({
-    name = "nextcloud to magic",
-    match = { class = "com.nextcloud.desktopclient.nextcloud" },
     workspace = "special:magic silent",
 })
 
