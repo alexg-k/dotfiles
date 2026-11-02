@@ -30,7 +30,7 @@ hl.monitor({
 
 -- Set programs that you use
 local terminal    = "kitty"
-local fileManager = "kitty -e yazi"
+local fileManager = "kitty fish -ic 'y; exec fish'"
 local menu        = "noctalia msg panel-toggle launcher"
 local browser     = "flatpak run app.zen_browser.zen"
 local email       = "flatpak run org.mozilla.Thunderbird"
