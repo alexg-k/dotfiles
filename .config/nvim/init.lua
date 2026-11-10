@@ -515,6 +515,16 @@ do
     end
   end
 
+  -- Open the selected picker entry as a hex dump (`:edit` followed by `:%!xxd`).
+  local function hex_select(prompt_bufnr)
+    local entry = telescope_action_state.get_selected_entry()
+    telescope_actions.close(prompt_bufnr)
+    if entry then
+      vim.cmd('edit ' .. vim.fn.fnameescape(entry.path or entry.value))
+      vim.cmd '%!xxd'
+    end
+  end
+
   -- See `:help telescope` and `:help telescope.setup()`
   require('telescope').setup {
     -- You can put your default mappings / updates / etc. in here
@@ -525,10 +535,12 @@ do
         i = {
           ['<C-M-x>'] = diff_select 'diffsplit',
           ['<C-M-v>'] = diff_select 'vertical diffsplit',
+          ['<C-b>'] = hex_select,
         },
         n = {
           ['<C-M-x>'] = diff_select 'diffsplit',
           ['<C-M-v>'] = diff_select 'vertical diffsplit',
+          ['<C-b>'] = hex_select,
         },
       },
       vimgrep_arguments = {
