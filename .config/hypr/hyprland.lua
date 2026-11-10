@@ -9,7 +9,7 @@
 -- Create your files separately and then require them like this:
 -- require("myColors")
 
-local catppuccin = require("mocha")
+local colors = require('themes.catppuccin-mocha')
 
 ------------------
 ---- MONITORS ----
@@ -113,7 +113,7 @@ hl.config({
         border_size = 2,
 
         col = {
-            active_border = { colors = {catppuccin.mauve, catppuccin.lavender}, angle = 45 },
+            active_border = { colors = {colors.mauve, colors.lavender}, angle = 45 },
             inactive_border = "rgba(595959aa)",
         },
 
