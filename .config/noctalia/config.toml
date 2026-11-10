@@ -3,7 +3,7 @@ order = [ "taskbar" ]
 
     [bar.taskbar]
     background_opacity = 0.7
-    center = [ "date", "clock", "weather_spacer", "weather" ]
+    center = [ "date", "date_spacer", "clock", "weather_spacer", "weather" ]
     end = [ "media", "media_spacer", "tray", "group:g1", "group:g4", "group:g3", "group:g2", "control-center", "session" ]
     font_weight = 400
     margin_edge = 1
@@ -137,6 +137,7 @@ length = 10
 type = "spacer"
 
 [widget.clock]
+anchor = true
 format = "{:%H:%M}"
 
 [widget.control-center]
@@ -145,6 +146,10 @@ enabled = false
 [widget.date]
 font_scale = 0.92
 scale = 1.0
+
+[widget.date_spacer]
+length = 10
+type = "spacer"
 
 [widget.input_volume]
 enabled = false
@@ -175,4 +180,5 @@ enabled = false
 show_condition = false
 
 [widget.weather_spacer]
+length = 13
 type = "spacer"
