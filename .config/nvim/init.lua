@@ -451,6 +451,12 @@ do
 
   -- ... and there is more!
   --  Check out: https://github.com/nvim-mini/mini.nvim
+
+  -- vim.pack
+  vim.pack.add({
+    "https://github.com/catgoose/nvim-colorizer.lua"
+  })
+  require("colorizer").setup()
 end
 
 -- ============================================================
@@ -497,15 +503,34 @@ do
   -- NOTE: You can install multiple plugins at once
   vim.pack.add(telescope_plugins)
 
+  -- Open the selected picker entry in a diff split against the current window.
+  --  <C-M-x> opens a horizontal diff split, <C-M-v> a vertical one.
+  local telescope_actions = require 'telescope.actions'
+  local telescope_action_state = require 'telescope.actions.state'
+  local function diff_select(split_cmd)
+    return function(prompt_bufnr)
+      local entry = telescope_action_state.get_selected_entry()
+      telescope_actions.close(prompt_bufnr)
+      if entry then vim.cmd(split_cmd .. ' ' .. vim.fn.fnameescape(entry.path or entry.value)) end
+    end
+  end
+
   -- See `:help telescope` and `:help telescope.setup()`
   require('telescope').setup {
     -- You can put your default mappings / updates / etc. in here
     --  All the info you're looking for is in `:help telescope.setup()`
     --
     defaults = {
-      -- mappings = {
-      --   i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-      -- },
+      mappings = {
+        i = {
+          ['<C-M-x>'] = diff_select 'diffsplit',
+          ['<C-M-v>'] = diff_select 'vertical diffsplit',
+        },
+        n = {
+          ['<C-M-x>'] = diff_select 'diffsplit',
+          ['<C-M-v>'] = diff_select 'vertical diffsplit',
+        },
+      },
       vimgrep_arguments = {
         'rg',
         '--color=never',
